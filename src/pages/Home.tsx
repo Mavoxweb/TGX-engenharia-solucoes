@@ -1,0 +1,639 @@
+import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { posts } from '../data/posts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { 
+  faArrowRight, 
+  faShieldHalved, 
+  faBuilding, 
+  faCheckCircle, 
+  faFireExtinguisher, 
+  faFileSignature, 
+  faHelmetSafety, 
+  faTree, 
+  faMapLocationDot,
+  faStar,
+  faCircleCheck,
+  faPlus,
+  faMinus,
+  faCircleQuestion,
+  faBookOpen
+} from '@fortawesome/free-solid-svg-icons';
+
+const Home = () => {
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const toggleFAQ = (index: number) => setActiveFaq(activeFaq === index ? null : index);
+
+  const stats = [
+    { number: '+1.000', label: 'Empresas Regularizadas' },
+    { number: '+10 Anos', label: 'de Experiência Técnica' },
+    { number: '98%', label: 'de Aprovação Direta' },
+    { number: '100%', label: 'Exigências Resolvidas' }
+  ];
+
+  const servicos = [
+    { 
+      title: 'AVCB e CLCB', 
+      desc: 'Projetos, vistorias e renovações completas de Auto de Vistoria do Corpo de Bombeiros. Proteção absoluta contra incêndios.', 
+      icon: faFireExtinguisher,
+      tag: 'Bombeiros'
+    },
+    { 
+      title: 'Alvará de Funcionamento', 
+      desc: 'Regularização completa junto às prefeituras para o funcionamento legal de indústrias, comércios e escritórios.', 
+      icon: faBuilding,
+      tag: 'Prefeituras'
+    },
+    { 
+      title: 'Licenciamento Ambiental', 
+      desc: 'Adequação, assessoria técnica e emissão de licenças junto à CETESB e órgãos reguladores ambientais.', 
+      icon: faTree,
+      tag: 'CETESB'
+    },
+    { 
+      title: 'Licença Sanitária', 
+      desc: 'Projetos técnicos e adequação estrutural para conformidade com a Vigilância Sanitária (ANVISA) e prefeituras.', 
+      icon: faFileSignature,
+      tag: 'ANVISA'
+    },
+    { 
+      title: 'Laudos Técnicos e ART', 
+      desc: 'Emissão de laudos de estabilidade, SPDA (para-raios), instalações elétricas e reformas, assinados por especialistas.', 
+      icon: faHelmetSafety,
+      tag: 'Engenharia'
+    },
+    { 
+      title: 'Regularização de Imóveis', 
+      desc: 'Habite-se, desdobros, projetos de reforma e retificação de áreas. Segurança jurídica para o seu patrimônio.', 
+      icon: faMapLocationDot,
+      tag: 'Imobiliário'
+    },
+  ];
+
+  const diferenciais = [
+    {
+      title: 'Agilidade & Prazos Rígidos',
+      desc: 'Atraso em licenças custa caro. Nossos processos são padronizados para garantir protocolos rápidos e emissões ágeis.'
+    },
+    {
+      title: 'Equipe Técnica Especializada',
+      desc: 'Nossos engenheiros e arquitetos possuem trâmite direto e profundo conhecimento das normas vigentes e legislações locais.'
+    },
+    {
+      title: 'Suporte & Transparência Real',
+      desc: 'Você sabe exatamente em qual etapa está o seu protocolo. Sem jargões difíceis, com comunicação clara e direta.'
+    },
+    {
+      title: 'Conformidade Sem Retrabalho',
+      desc: 'Elaboramos projetos precisos de primeira. Minimizamos multas, custos desnecessários e interdições operacionais.'
+    }
+  ];
+
+  const passos = [
+    {
+      num: '01',
+      title: 'Diagnóstico Gratuito',
+      desc: 'Avaliamos a situação atual do seu imóvel e identificamos todas as licenças e laudos necessários para regularização.'
+    },
+    {
+      num: '02',
+      title: 'Plano de Ação',
+      desc: 'Elaboramos uma proposta técnica detalhada com escopo, prazos, investimentos e responsabilidades.'
+    },
+    {
+      num: '03',
+      title: 'Execução Técnica',
+      desc: 'Realizamos vistorias, coletamos dados, elaboramos projetos e emitimos todas as documentações e laudos necessários.'
+    },
+    {
+      num: '04',
+      title: 'Protocolo e Entrega',
+      desc: 'Acompanhamos o trâmite nos órgãos emissores e gerenciamos exigências até a entrega da sua licença aprovada.'
+    }
+  ];
+
+  const depoimentos = [
+    {
+      quote: "A TGX regularizou nosso galpão logístico em tempo recorde. Estávamos travados por conta do AVCB e eles resolveram tudo sem que precisássemos parar as operações.",
+      author: "Marcos Aurelio",
+      role: "Gerente de Operações, LogiTrans Brasil",
+      stars: 5
+    },
+    {
+      quote: "Excelente suporte no licenciamento da nossa nova fábrica. O conhecimento técnico deles sobre as exigências da CETESB evitou retrabalho e nos economizou milhares de reais.",
+      author: "Clara Mendes",
+      role: "Diretora Industrial, Inova Alimentos",
+      stars: 5
+    },
+    {
+      quote: "Trabalho sério e muito profissional. Acompanhamos cada etapa pelo painel e o alvará de funcionamento foi emitido sem nenhuma surpresa ou taxa extra inesperada.",
+      author: "Roberto D'Angelo",
+      role: "Sócio Administrador, Rede Plaza Co.",
+      stars: 5
+    }
+  ];
+
+  const faqs = [
+    { 
+      q: "Qual é a diferença real entre AVCB e CLCB e qual meu imóvel necessita?", 
+      a: "O AVCB (Auto de Vistoria do Corpo de Bombeiros) é exigido para edificações de maior porte ou alto risco. O CLCB (Certificado de Licença do Corpo de Bombeiros) aplica-se a imóveis menores. Nossa equipe avalia seu espaço gratuitamente para definir o correto." 
+    },
+    { 
+      q: "Quanto tempo leva o processo para emissão de um Alvará de Funcionamento?", 
+      a: "Varia conforme o município e o risco. Liberações digitais simples podem sair em dias, enquanto atividades industriais levam de 30 a 90 dias. Nós aceleramos esse processo protocolando corretamente de primeira." 
+    },
+    { 
+      q: "Quais são as punições por operar sem licenças?", 
+      a: "Multas pesadas, interdição física do negócio, recusa de pagamento por seguradoras em caso de sinistro e responsabilidade civil/criminal aos sócios." 
+    },
+    { 
+      q: "A TGX executa as obras físicas de combate a incêndio?", 
+      a: "Nossa especialidade é a Engenharia Legal (projetos, laudos e trâmites). Para execução de obras (hidrantes, extintores), fornecemos o projeto exato e podemos indicar parceiros confiáveis." 
+    }
+  ];
+
+
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === '#faq') {
+      const element = document.getElementById('faq');
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [hash]);
+
+  const recentPosts = posts.slice(0, 3);
+
+  return (
+    <>
+      <Helmet>
+        <title>TGX Engenharia e Soluções | Engenharia Especializada e Regularização</title>
+        <meta name="description" content="Protegemos empresas através da engenharia especializada e regularização completa. Especialistas em AVCB, CLCB, Alvarás, CETESB e Laudos Técnicos." />
+      </Helmet>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-primary text-white">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/95 to-primary z-10" />
+          <img 
+            src="https://images.unsplash.com/photo-1542362567-b07eac790acd?q=80&w=2070&auto=format&fit=crop" 
+            alt="Fachada corporativa premium" 
+            className="w-full h-full object-cover opacity-20 mix-blend-overlay scale-105"
+          />
+          <div 
+            className="absolute inset-0 opacity-10 z-10 pointer-events-none" 
+            style={{ 
+              backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)', 
+              backgroundSize: '48px 48px' 
+            }} 
+          />
+          <div 
+            className="absolute inset-0 opacity-5 z-10 pointer-events-none" 
+            style={{ 
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1.5px, transparent 0)', 
+              backgroundSize: '24px 24px' 
+            }} 
+          />
+          <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute -bottom-10 -left-10 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[120px] pointer-events-none" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-20">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="max-w-2xl"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-sm">
+                <FontAwesomeIcon icon={faShieldHalved} className="text-gold text-sm animate-pulse" />
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-300">Engenharia Legal e Regularizações</span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-6 text-white tracking-tight">
+                Patrimônio protegido.<br />
+                Empresa regularizada.<br />
+                <span className="text-gradient">Sem burocracia.</span>
+              </h1>
+              
+              <p className="text-base md:text-lg text-gray-400 mb-10 leading-relaxed max-w-xl font-light">
+                Evite multas e riscos de interdição. Cuidamos do AVCB, alvarás municipais, licenciamento ambiental e laudos de engenharia com equipe própria especializada.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a 
+                  href="https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20TGX%20Engenharia."
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  className="btn-primary rounded-full flex items-center justify-center gap-2 group text-xs px-8 py-4 shadow-[0_4px_20px_rgba(215,168,61,0.25)] hover:shadow-[0_4px_30px_rgba(215,168,61,0.4)]"
+                >
+                  <FontAwesomeIcon icon={faWhatsapp} className="text-sm" />
+                  Solicitar Diagnóstico Grátis
+                  <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1.5 transition-transform" />
+                </a>
+                <Link 
+                  to="/contato" 
+                  className="btn-outline rounded-full flex items-center justify-center gap-2 text-xs px-8 py-4 border-white/20 text-white hover:bg-white hover:text-primary hover:border-white"
+                >
+                  Falar com Engenheiro
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="hidden lg:block relative"
+            >
+              <div className="relative rounded-2xl bg-slate-900/40 border border-white/10 p-4 aspect-[4/5] max-w-md mx-auto shadow-2xl backdrop-blur-xs">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/80 via-transparent to-transparent z-10" />
+                <img 
+                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931&auto=format&fit=crop" 
+                  alt="Engenheiro analisando plantas de segurança" 
+                  className="w-full h-full object-cover rounded-xl"
+                />
+                
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                  className="absolute bottom-10 -left-10 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-white/10 z-20 flex items-center gap-4"
+                >
+                  <div className="bg-success/20 p-3 rounded-full">
+                    <FontAwesomeIcon icon={faCheckCircle} className="text-2xl text-success" />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold font-manrope text-sm">100% Aprovado</p>
+                    <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Conformidade Legal</p>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1.5 }}
+                  className="absolute top-12 -right-10 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-white/10 z-20 flex items-center gap-4"
+                >
+                  <div className="bg-gold/20 p-3 rounded-full">
+                    <FontAwesomeIcon icon={faBuilding} className="text-2xl text-gold" />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold font-manrope text-sm">+1.000</p>
+                    <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Projetos Executados</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Stats Bar */}
+      <section className="py-12 bg-slate-50 border-b border-slate-100 relative z-30">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+             {stats.map((stat, idx) => (
+               <div key={idx} className="text-center">
+                 <h3 className="text-3xl md:text-4xl font-extrabold font-manrope text-primary mb-1">{stat.number}</h3>
+                 <p className="text-slate-500 font-semibold text-xs uppercase tracking-wider">{stat.label}</p>
+               </div>
+             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-24 bg-white relative z-30">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-gold font-bold text-xs uppercase tracking-widest bg-gold/10 px-4 py-1.5 rounded-full inline-block mb-4">Soluções Corporativas</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black font-manrope mb-6 text-primary">
+              Nossos Serviços Especializados
+            </h2>
+            <p className="text-slate-600 text-base md:text-lg">
+              Oferecemos assessoria técnica e jurídica completa nos principais órgãos públicos para garantir a conformidade da sua empresa.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {servicos.map((servico, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="bg-white p-8 flex flex-col justify-between rounded-2xl border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(7,28,58,0.08)] hover:-translate-y-1 hover:border-gold/30 transition-all duration-300 relative group overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center border border-primary/10">
+                      <FontAwesomeIcon icon={servico.icon} className="text-xl text-primary" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-gold bg-gold/10 px-2.5 py-1 rounded-md">
+                      {servico.tag}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold font-manrope text-primary mb-4">{servico.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-8">{servico.desc}</p>
+                </div>
+                <Link 
+                  to="/servicos" 
+                  className="text-xs font-bold text-primary hover:text-gold uppercase tracking-wider transition-colors inline-flex items-center gap-2 group mt-auto"
+                >
+                  Ver Detalhes do Serviço 
+                  <FontAwesomeIcon icon={faArrowRight} className="text-[10px] group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative z-30 border-y border-slate-100">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-gold font-bold text-xs uppercase tracking-widest bg-gold/10 px-4 py-1.5 rounded-full inline-block mb-4">Diferenciais TGX</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black font-manrope mb-6 text-primary leading-tight">
+                A segurança que sua empresa precisa, sem burocracia.
+              </h2>
+              <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
+                Nós não vendemos apenas papéis ou relatórios técnicos. Entregamos a tranquilidade de saber que sua empresa opera de forma 100% legal, protegendo sua operação contra multas e garantindo a segurança física do seu patrimônio e colaboradores.
+              </p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3">
+                  <FontAwesomeIcon icon={faCircleCheck} className="text-gold text-lg shrink-0" />
+                  <span className="text-sm font-semibold text-slate-800">Projetos rigorosamente alinhados ao Decreto Estadual nº 63.911</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <FontAwesomeIcon icon={faCircleCheck} className="text-gold text-lg shrink-0" />
+                  <span className="text-sm font-semibold text-slate-800">Processos digitais integrados via Via Fácil Bombeiros e prefeituras</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <FontAwesomeIcon icon={faCircleCheck} className="text-gold text-lg shrink-0" />
+                  <span className="text-sm font-semibold text-slate-800">Acompanhamento de pendências em tempo real</span>
+                </div>
+              </div>
+              <a 
+                href="https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20falar%20com%20um%20engenheiro%20sobre%20regularização."
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="btn-outline-primary text-xs flex items-center gap-2 w-max"
+              >
+                <FontAwesomeIcon icon={faWhatsapp} className="text-sm" />
+                Falar com um Engenheiro
+              </a>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-6">
+              {diferenciais.map((item, idx) => (
+                <div key={idx} className="bg-white p-6 rounded-xl border border-slate-100 shadow-[0_5px_20px_rgba(0,0,0,0.02)]">
+                  <h4 className="font-bold font-manrope text-base text-primary mb-3">{item.title}</h4>
+                  <p className="text-slate-600 text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Onboarding / Process steps Section */}
+      <section className="py-24 bg-white relative z-30">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <span className="text-gold font-bold text-xs uppercase tracking-widest bg-gold/10 px-4 py-1.5 rounded-full inline-block mb-4">Etapas de Trabalho</span>
+            <h2 className="text-3xl md:text-4xl font-black font-manrope mb-6 text-primary">
+              Como Funciona Nosso Método
+            </h2>
+            <p className="text-slate-600 text-base">
+              Simplificamos o complexo. Criamos um caminho estruturado para regularizar sua empresa com segurança técnica e conformidade jurídica.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            <div className="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-[2px] bg-slate-100 z-0" />
+            
+            {passos.map((passo, idx) => (
+              <div key={idx} className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-slate-50 border-2 border-slate-100 flex items-center justify-center font-black font-manrope text-xl text-gold mb-6 shadow-sm relative bg-white">
+                  {passo.num}
+                  <div className="absolute inset-0 rounded-full border border-gold/20 scale-125 animate-pulse pointer-events-none" />
+                </div>
+                <h3 className="font-bold font-manrope text-lg text-primary mb-3">{passo.title}</h3>
+                <p className="text-slate-600 text-xs leading-relaxed max-w-xs">{passo.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-slate-50 relative z-30 border-y border-slate-100">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-gold font-bold text-xs uppercase tracking-widest bg-gold/10 px-4 py-1.5 rounded-full inline-block mb-4">Depoimentos</span>
+            <h2 className="text-3xl md:text-4xl font-black font-manrope mb-6 text-primary">
+              O que dizem os nossos clientes corporativos
+            </h2>
+            <p className="text-slate-600 text-base">
+              A satisfação técnica e o cumprimento de prazos são as bases dos nossos relacionamentos com empresas de diversos segmentos.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {depoimentos.map((dep, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+                <div>
+                  <div className="flex gap-1 text-gold mb-6">
+                    {Array.from({ length: dep.stars }).map((_, i) => (
+                      <FontAwesomeIcon key={i} icon={faStar} className="text-xs" />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 text-sm italic leading-relaxed mb-8">
+                    "{dep.quote}"
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-primary font-manrope text-sm">{dep.author}</h4>
+                  <p className="text-xs text-slate-500 font-semibold">{dep.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 bg-white relative z-30">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-5">
+              <span className="text-gold font-bold text-xs uppercase tracking-widest bg-gold/10 px-4 py-1.5 rounded-full inline-block mb-4">Central de Dúvidas</span>
+              <h2 className="text-3xl md:text-4xl font-black font-manrope mb-6 text-primary">
+                Perguntas Frequentes
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed mb-8">
+                Esclarecemos os principais termos e exigências de engenharia de segurança e regularização patrimonial para sua empresa.
+              </p>
+              <a 
+                href="https://wa.me/5511947505886?text=Olá,%20tenho%20uma%20dúvida%20sobre%20licenciamento."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline-primary text-xs w-max flex items-center gap-2"
+              >
+                <FontAwesomeIcon icon={faWhatsapp} className="text-sm" />
+                Minha dúvida não está aqui
+              </a>
+            </div>
+
+            <div className="lg:col-span-7 space-y-4">
+              {faqs.map((faq, idx) => {
+                const isOpen = activeFaq === idx;
+                return (
+                  <div 
+                    key={idx}
+                    className="bg-slate-50 border border-slate-100 rounded-2xl overflow-hidden shadow-sm"
+                  >
+                    <button
+                      onClick={() => toggleFAQ(idx)}
+                      className="w-full flex items-center justify-between p-6 text-left focus:outline-none transition-colors hover:bg-slate-100/50"
+                    >
+                      <div className="flex gap-4 items-center pr-4">
+                        <FontAwesomeIcon icon={faCircleQuestion} className={`text-lg transition-colors ${isOpen ? 'text-gold' : 'text-primary/40'}`} />
+                        <span className="text-primary font-bold font-manrope text-sm md:text-base">{faq.q}</span>
+                      </div>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs transition-transform duration-300 ${isOpen ? 'rotate-180 bg-gold/10 text-gold' : 'bg-white border border-slate-200 text-slate-400'}`}>
+                        <FontAwesomeIcon icon={isOpen ? faMinus : faPlus} />
+                      </div>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                        >
+                          <div className="p-6 pt-0 text-slate-600 text-sm leading-relaxed">
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Preview Section */}
+      <section className="py-24 bg-slate-50 relative z-30 border-t border-slate-100">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div className="max-w-2xl">
+              <span className="text-gold font-bold text-xs uppercase tracking-widest bg-gold/10 px-4 py-1.5 rounded-full inline-block mb-4">Conteúdo Técnico</span>
+              <h2 className="text-3xl md:text-4xl font-black font-manrope mb-4 text-primary">
+                Acompanhe nosso Blog
+              </h2>
+              <p className="text-slate-600 text-base">
+                Artigos, atualizações na legislação e dicas de engenharia legal.
+              </p>
+            </div>
+            <Link to="/blog" className="btn-outline-primary text-xs shrink-0 whitespace-nowrap hidden md:inline-flex">
+              Ver Todos os Artigos <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {recentPosts.map((post: any, idx: number) => (
+              <Link to={`/blog/${post.slug}`} key={idx} className="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-primary">
+                    {post.category}
+                  </div>
+                </div>
+                <div className="p-6 flex-grow flex flex-col">
+                  <p className="text-xs text-slate-400 font-semibold mb-3 flex items-center gap-2">
+                    <FontAwesomeIcon icon={faBookOpen} /> {post.date}
+                  </p>
+                  <h3 className="text-lg font-bold font-manrope text-primary mb-3 group-hover:text-gold transition-colors leading-snug">
+                    {post.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  <div className="mt-auto text-xs font-bold text-primary uppercase tracking-widest group-hover:text-gold transition-colors inline-flex items-center gap-2">
+                    Ler Artigo <FontAwesomeIcon icon={faArrowRight} className="text-[10px]" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center md:hidden">
+            <Link to="/blog" className="btn-outline-primary text-xs w-full justify-center">
+              Ver Todos os Artigos
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Banner (Premium Dark/Gold Gradient Card) */}
+      <section className="py-24 bg-white relative z-30">
+        <div className="container mx-auto px-6">
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-primary via-primary/95 to-[#051123] text-white p-12 md:p-16 lg:p-20 shadow-2xl border border-white/5">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(215,168,61,0.2),transparent)] pointer-events-none" />
+            <div className="absolute top-0 left-0 w-full h-full bg-grid-white/[0.02] pointer-events-none" />
+            
+            <div className="relative z-10 max-w-4xl mx-auto text-center">
+              <span className="text-gold font-bold text-xs uppercase tracking-widest mb-6 inline-block border border-gold/30 px-4 py-1.5 rounded-full">
+                Solicite um Orçamento Técnico
+              </span>
+              <h2 className="text-3xl md:text-5xl font-black font-manrope text-white mb-6 leading-tight">
+                Evite multas e interdições. Coloque as licenças da sua empresa em dia hoje.
+              </h2>
+              <p className="text-gray-400 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+                Nossos consultores técnicos estão prontos para analisar sua situação e indicar o caminho mais econômico e eficiente para sua regularização técnica completa.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <a 
+                  href="https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20TGX%20Engenharia."
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  className="btn-primary flex items-center justify-center gap-2 group text-sm"
+                >
+                  <FontAwesomeIcon icon={faWhatsapp} />
+                  Falar com Engenheiro no WhatsApp
+                  <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+                <Link to="/contato" className="btn-outline border-white/20 text-white hover:bg-white hover:text-primary flex items-center justify-center gap-2 text-sm">
+                  Preencher Formulário
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Home;

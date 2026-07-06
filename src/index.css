@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-slate-700 font-inter antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-manrope text-primary;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gold hover:bg-lightgold text-primary font-bold py-3 px-8 rounded-md uppercase tracking-widest transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer;
+  }
+
+  .btn-outline {
+    @apply border border-gold text-gold hover:bg-gold hover:text-primary font-bold py-3 px-8 rounded-md uppercase tracking-widest transition-all duration-300 inline-flex items-center gap-2 cursor-pointer;
+  }
+
+  .btn-outline-primary {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-md uppercase tracking-widest transition-all duration-300 inline-flex items-center gap-2 cursor-pointer;
+  }
+
+  .glass-card {
+    @apply bg-surface/90 backdrop-blur-md border border-white/10 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_8px_30px_rgba(215,168,61,0.15)] transition-all duration-500 hover:-translate-y-2;
+  }
+
+  .light-card {
+    @apply bg-white border border-slate-100 rounded-xl shadow-[0_10px_35px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_35px_rgba(7,28,58,0.08)] transition-all duration-500 hover:-translate-y-2;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold via-gold to-lightgold;
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}

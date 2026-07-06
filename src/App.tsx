@@ -10,10 +10,12 @@ import Termos from './pages/Termos';
 import Politicas from './pages/Politicas';
 import { ModalProvider } from './contexts/ModalContext';
 import ContactModal from './components/ContactModal';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <ModalProvider>
+      <ScrollToTop />
       <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />

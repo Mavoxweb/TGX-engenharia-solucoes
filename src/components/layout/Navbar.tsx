@@ -106,9 +106,12 @@ const Navbar = () => {
           </a>
           <a 
             href="#" 
-            onClick={(e) => { e.preventDefault(); openModal('Olá, gostaria de solicitar um orçamento com a TGX Engenharia.'); }}
+            onClick={(e) => { 
+              e.preventDefault(); 
+              openModal('Olá, gostaria de solicitar um orçamento com a TGX Engenharia.');
+              setIsMobileMenuOpen(false);
+            }}
             className="btn-primary text-center mt-4 text-xs py-3 flex items-center justify-center gap-2"
-            onClick={() => setIsMobileMenuOpen(false)}
           >
             <FontAwesomeIcon icon={faWhatsapp} className="text-lg" />
             Falar no WhatsApp

@@ -178,6 +178,29 @@ const Home = () => {
       <Helmet>
         <title>TGX Engenharia e Soluções | Engenharia Especializada e Regularização</title>
         <meta name="description" content="Protegemos empresas através da engenharia especializada e regularização completa. Especialistas em AVCB, CLCB, Alvarás, CETESB e Laudos Técnicos." />
+        <meta property="og:title" content="TGX Engenharia e Soluções | Engenharia Especializada e Regularização" />
+        <meta property="og:description" content="Protegemos empresas através da engenharia especializada e regularização completa. Especialistas em AVCB, CLCB, Alvarás, CETESB e Laudos Técnicos." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.tgxengenharia.com.br/" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "TGX Engenharia e Soluções",
+              "image": "https://www.tgxengenharia.com.br/logo.png",
+              "description": "Engenharia especializada e regularização corporativa. AVCB, CLCB, Alvarás, CETESB e Laudos Técnicos.",
+              "url": "https://www.tgxengenharia.com.br",
+              "telephone": "+5511947505886",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "São Paulo",
+                "addressRegion": "SP",
+                "addressCountry": "BR"
+              }
+            }
+          `}
+        </script>
       </Helmet>
 
       {/* Hero Section */}

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faTimes, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import DOMPurify from 'dompurify';
 import { useModal } from '../contexts/ModalContext';
 
 const ContactModal = () => {
@@ -23,16 +24,19 @@ const ContactModal = () => {
   };
 
   const formatWhatsAppMessage = () => {
+    // Sanitização rigorosa contra Cross-Site Scripting e Injection
+    const sanitize = (text: string) => DOMPurify.sanitize(text.trim(), { ALLOWED_TAGS: [] });
+
     let msg = `*Novo Contato via Site - TGX Engenharia*\n\n`;
-    msg += `*Nome:* ${formData.nome}\n`;
-    msg += `*Telefone:* ${formData.telefone}\n`;
-    msg += `*Grau de Urgência:* ${formData.urgencia}\n`;
-    msg += `*Tipo de Serviço:* ${formData.servico}\n`;
+    msg += `*Nome:* ${sanitize(formData.nome)}\n`;
+    msg += `*Telefone:* ${sanitize(formData.telefone)}\n`;
+    msg += `*Grau de Urgência:* ${sanitize(formData.urgencia)}\n`;
+    msg += `*Tipo de Serviço:* ${sanitize(formData.servico)}\n`;
     if (formData.detalhes) {
-      msg += `*Detalhes:* ${formData.detalhes}\n`;
+      msg += `*Detalhes:* ${sanitize(formData.detalhes)}\n`;
     }
     if (defaultMessage) {
-      msg += `\n*Origem/Interesse:* ${defaultMessage}\n`;
+      msg += `\n*Origem/Interesse:* ${sanitize(defaultMessage)}\n`;
     }
     return encodeURIComponent(msg);
   };

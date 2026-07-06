@@ -8,10 +8,13 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Termos from './pages/Termos';
 import Politicas from './pages/Politicas';
+import { ModalProvider } from './contexts/ModalContext';
+import ContactModal from './components/ContactModal';
 
 function App() {
   return (
-    <Routes>
+    <ModalProvider>
+      <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="servicos" element={<Servicos />} />
@@ -22,7 +25,9 @@ function App() {
         <Route path="termos" element={<Termos />} />
         <Route path="politicas" element={<Politicas />} />
       </Route>
-    </Routes>
+      </Routes>
+      <ContactModal />
+    </ModalProvider>
   );
 }
 

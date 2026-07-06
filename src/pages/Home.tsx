@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { posts } from '../data/posts';
+import { useModal } from '../contexts/ModalContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { 
@@ -24,6 +25,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
+  const { openModal } = useModal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const toggleFAQ = (index: number) => setActiveFaq(activeFaq === index ? null : index);
 
@@ -230,9 +232,8 @@ const Home = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href="https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20TGX%20Engenharia."
-                  target="_blank"
-                  rel="noopener noreferrer" 
+                  href="#"
+                  onClick={(e) => { e.preventDefault(); openModal('Olá, gostaria de solicitar um orçamento com a TGX Engenharia.'); }}
                   className="btn-primary rounded-full flex items-center justify-center gap-2 group text-xs px-8 py-4 shadow-[0_4px_20px_rgba(215,168,61,0.25)] hover:shadow-[0_4px_30px_rgba(215,168,61,0.4)]"
                 >
                   <FontAwesomeIcon icon={faWhatsapp} className="text-sm" />
@@ -385,9 +386,8 @@ const Home = () => {
                 </div>
               </div>
               <a 
-                href="https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20falar%20com%20um%20engenheiro%20sobre%20regularização."
-                target="_blank"
-                rel="noopener noreferrer" 
+                href="#"
+                onClick={(e) => { e.preventDefault(); openModal('Olá, gostaria de falar com um engenheiro sobre regularização.'); }}
                 className="btn-outline-primary text-xs flex items-center gap-2 w-max"
               >
                 <FontAwesomeIcon icon={faWhatsapp} className="text-sm" />
@@ -486,9 +486,8 @@ const Home = () => {
                 Esclarecemos os principais termos e exigências de engenharia de segurança e regularização patrimonial para sua empresa.
               </p>
               <a 
-                href="https://wa.me/5511947505886?text=Olá,%20tenho%20uma%20dúvida%20sobre%20licenciamento."
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
+                onClick={(e) => { e.preventDefault(); openModal('Olá, tenho uma dúvida sobre licenciamento.'); }}
                 className="btn-outline-primary text-xs w-max flex items-center gap-2"
               >
                 <FontAwesomeIcon icon={faWhatsapp} className="text-sm" />
@@ -615,9 +614,8 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <a 
-                  href="https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20TGX%20Engenharia."
-                  target="_blank"
-                  rel="noopener noreferrer" 
+                  href="#"
+                  onClick={(e) => { e.preventDefault(); openModal('Olá, gostaria de solicitar um orçamento com a TGX Engenharia.'); }}
                   className="btn-primary flex items-center justify-center gap-2 group text-sm"
                 >
                   <FontAwesomeIcon icon={faWhatsapp} />

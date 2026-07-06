@@ -158,5 +158,32 @@ export const posts = [
       <h2>Como a TGX resolve isso de forma definitiva?</h2>
       <p>Contamos com uma equipe experiente em regularização fundiária e aprovações municipais. Elaboramos o projeto As-Built, protocolamos o processo de regularização na subprefeitura, obtendo o novo Habite-se. Por fim, levamos toda a documentação ao Cartório de Registro de Imóveis para a averbação final na matrícula, blindando o seu ativo patrimonial de qualquer questionamento fiscal ou legal.</p>
     `
+  },
+  {
+    slug: 'laudos-eletricos-nr10-risco-silencioso',
+    title: 'Laudos Elétricos e NR-10: O Risco Silencioso Que Pode Custar Milhões à Sua Indústria',
+    excerpt: 'Seu seguro patrimonial será negado se os laudos elétricos e o PIE (Prontuário das Instalações Elétricas) estiverem desatualizados. Descubra a importância vital da NR-10 e do Laudo de SPDA.',
+    category: 'Laudos Técnicos e Normas',
+    date: '10 de Junho, 2026',
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop',
+    content: `
+      <h2>O Risco Silencioso Oculto nos Painéis Elétricos</h2>
+      <p>Muitos gestores industriais e gerentes de facilities só lembram das instalações elétricas quando ocorre uma queda de energia ou um princípio de incêndio. Entretanto, a falta de manutenção e de laudos atualizados — especialmente o Laudo de Instalações Elétricas (NR-10) e o Laudo de SPDA (Para-raios) — representa um dos maiores passivos trabalhistas e operacionais que uma empresa pode carregar.</p>
+
+      <h2>O que as Seguradoras Procuram (E o que elas negam)</h2>
+      <p>Em caso de incêndios em galpões industriais e centros de distribuição, a perícia da seguradora é imediata. E qual é o primeiro documento que eles exigem? <strong>O Prontuário das Instalações Elétricas (PIE) e o laudo termográfico atualizado.</strong></p>
+      
+      <p>Se a sua empresa não puder comprovar, através de laudos técnicos assinados por um engenheiro eletricista habilitado (com ART), que as manutenções anuais preventivas foram realizadas, a seguradora <strong>negará o pagamento da apólice alegando negligência corporativa</strong>. Um simples painel superaquecido sem vistoria pode custar milhões, sem falar no risco de acidentes fatais.</p>
+
+      <h2>Principais Laudos Elétricos Obrigatórios</h2>
+      <ul>
+        <li><strong>Laudo de Instalações Elétricas (NR-10):</strong> Atesta a conformidade dos quadros, condutores, disjuntores e dispositivos DR, garantindo a proteção da equipe de manutenção.</li>
+        <li><strong>Laudo de SPDA (Para-raios):</strong> Medição ôhmica da malha de aterramento. A NBR-5419 exige inspeção visual a cada seis meses e medição anual completa.</li>
+        <li><strong>Termografia Infravermelha:</strong> Identifica pontos quentes e falhas de conexão antes que derretam os cabos ou gerem faíscas. Previne paradas repentinas na linha de produção, sendo uma prática de classe mundial na Manutenção Preditiva.</li>
+      </ul>
+
+      <h2>A Solução Definitiva da TGX Engenharia</h2>
+      <p>A engenharia elétrica preventiva não é apenas uma exigência do Ministério do Trabalho; é inteligência financeira. A TGX Engenharia fornece toda a documentação necessária: desde a inspeção termográfica minuciosa com emissão de relatórios fotográficos até a renovação completa do PIE e do SPDA. Asseguramos a proteção total ao seu patrimônio, mitigando riscos de sinistros e garantindo o compliance para auditorias do corpo de bombeiros e das seguradoras.</p>
+    `
   }
 ];

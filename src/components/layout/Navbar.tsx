@@ -4,9 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { motion } from 'framer-motion';
+import { useModal } from '../../contexts/ModalContext';
 import logoTgx from '../../assets/logo-tgx-sembg.png';
 
 const Navbar = () => {
+  const { openModal } = useModal();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -60,9 +62,8 @@ const Navbar = () => {
 
         <div className="hidden md:block">
           <a 
-            href="https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20TGX%20Engenharia." 
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#" 
+            onClick={(e) => { e.preventDefault(); openModal('Olá, gostaria de solicitar um orçamento com a TGX Engenharia.'); }}
             className="btn-primary text-xs py-2 px-5 flex items-center gap-2"
           >
             <FontAwesomeIcon icon={faWhatsapp} className="text-lg" />
@@ -104,9 +105,8 @@ const Navbar = () => {
             FAQ
           </a>
           <a 
-            href="https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20com%20a%20TGX%20Engenharia." 
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#" 
+            onClick={(e) => { e.preventDefault(); openModal('Olá, gostaria de solicitar um orçamento com a TGX Engenharia.'); }}
             className="btn-primary text-center mt-4 text-xs py-3 flex items-center justify-center gap-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >

@@ -39,7 +39,7 @@ const Sobre = () => {
       <div className="pt-40 pb-28 relative overflow-hidden bg-primary text-white border-b border-gold/10">
         <div className="absolute inset-0 bg-primary/95 z-10" />
         <img 
-          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop" 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop" 
           alt="Escritório de Engenharia" 
           className="w-full h-full object-cover opacity-20 mix-blend-overlay absolute inset-0"
         />
@@ -126,7 +126,7 @@ const Sobre = () => {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 aspect-[4/5] md:aspect-auto md:h-[600px]">
                 <img 
-                  src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" 
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop" 
                   alt="Trabalho de engenharia civil de campo na TGX" 
                   className="w-full h-full object-cover"
                 />

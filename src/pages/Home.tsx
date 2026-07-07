@@ -24,6 +24,21 @@ import {
   faBookOpen
 } from '@fortawesome/free-solid-svg-icons';
 
+const partners = [
+  { name: "McDonald's", domain: "mcdonalds.com" },
+  { name: "PepsiCo", domain: "pepsico.com" },
+  { name: "Walmart", domain: "walmart.com" },
+  { name: "Nestlé", domain: "nestle.com" },
+  { name: "Ambev", domain: "ambev.com.br" },
+  { name: "Grupo Pão de Açúcar", domain: "gpabr.com" },
+  { name: "Unilever", domain: "unilever.com" },
+  { name: "KFC", domain: "kfc.com" },
+  { name: "Subway", domain: "subway.com" },
+  { name: "Carrefour", domain: "carrefour.com.br" },
+  { name: "Coca-Cola", domain: "coca-cola.com" },
+  { name: "Burger King", domain: "bk.com" }
+];
+
 const Home = () => {
   const { openModal } = useModal();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -316,6 +331,44 @@ const Home = () => {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Partners Logo Cloud */}
+      <section className="py-12 bg-white border-b border-slate-100 overflow-hidden">
+        <div className="container mx-auto px-6 mb-8 text-center">
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+            Grandes corporações que confiam na nossa engenharia
+          </p>
+        </div>
+        <div className="relative w-full flex overflow-hidden">
+          {/* Fading edges for infinite scroll effect */}
+          <div className="absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          
+          <motion.div 
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
+            className="flex items-center gap-16 min-w-max px-8"
+          >
+            {[...partners, ...partners].map((partner, index) => (
+              <div key={index} className="flex items-center justify-center w-32 h-16 group shrink-0 relative">
+                <img 
+                  src={`https://logo.clearbit.com/${partner.domain}`} 
+                  alt={partner.name}
+                  className="max-w-full max-h-12 object-contain filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    if (target.nextElementSibling) {
+                      (target.nextElementSibling as HTMLElement).style.display = 'block';
+                    }
+                  }}
+                />
+                <span className="hidden font-bold text-slate-400 uppercase tracking-widest text-[10px] text-center w-full absolute">{partner.name}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
       

@@ -38,7 +38,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <img src={logoTgx} alt="TGX Engenharia Logo" className="h-10 w-auto object-contain" />
+          <img src={logoTgx} alt="TGX Engenharia Logo" className="h-14 md:h-16 w-auto object-contain transition-all duration-300" />
         </Link>
 
         {/* Desktop Nav */}

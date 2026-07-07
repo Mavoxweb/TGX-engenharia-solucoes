@@ -334,43 +334,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Partners Logo Cloud */}
-      <section className="py-12 bg-white border-b border-slate-100 overflow-hidden">
-        <div className="container mx-auto px-6 mb-8 text-center">
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-            Grandes corporações que confiam na nossa engenharia
-          </p>
-        </div>
-        <div className="relative w-full flex overflow-hidden">
-          {/* Fading edges for infinite scroll effect */}
-          <div className="absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-          
-          <motion.div 
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
-            className="flex items-center gap-16 min-w-max px-8"
-          >
-            {[...partners, ...partners].map((partner, index) => (
-              <div key={index} className="flex items-center justify-center w-36 h-16 group shrink-0 relative">
-                <img 
-                  src={partner.logo}
-                  alt={`Logo ${partner.name}`}
-                  className="max-w-full max-h-10 object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    if (target.nextElementSibling) {
-                      (target.nextElementSibling as HTMLElement).style.display = 'flex';
-                    }
-                  }}
-                />
-                <span className="hidden items-center justify-center font-bold text-slate-400 uppercase tracking-widest text-[9px] text-center w-full">{partner.name}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+
       
       {/* Stats Bar */}
       <section className="py-12 bg-slate-50 border-b border-slate-100 relative z-30">
@@ -546,6 +510,44 @@ const Home = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Partners Logo Cloud */}
+      <section className="py-12 bg-white border-b border-slate-100 overflow-hidden">
+        <div className="container mx-auto px-6 mb-8 text-center">
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+            Grandes corporações que confiam na nossa engenharia
+          </p>
+        </div>
+        <div className="relative w-full flex overflow-hidden">
+          {/* Fading edges for infinite scroll effect */}
+          <div className="absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          
+          <motion.div 
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
+            className="flex items-center gap-16 min-w-max px-8"
+          >
+            {[...partners, ...partners].map((partner, index) => (
+              <div key={index} className="flex items-center justify-center w-36 h-16 group shrink-0 relative">
+                <img 
+                  src={partner.logo}
+                  alt={`Logo ${partner.name}`}
+                  className="max-w-full max-h-10 object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    if (target.nextElementSibling) {
+                      (target.nextElementSibling as HTMLElement).style.display = 'flex';
+                    }
+                  }}
+                />
+                <span className="hidden items-center justify-center font-bold text-slate-400 uppercase tracking-widest text-[9px] text-center w-full">{partner.name}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 

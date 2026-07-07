@@ -25,54 +25,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const partners = [
-  {
-    name: "McDonald's",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/400px-McDonald%27s_Golden_Arches.svg.png"
-  },
-  {
-    name: "PepsiCo",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Pepsi_logo_2014.svg/400px-Pepsi_logo_2014.svg.png"
-  },
-  {
-    name: "Walmart",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Walmart_Spark.svg/400px-Walmart_Spark.svg.png"
-  },
-  {
-    name: "Nestlé",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Nestl%C3%A9.svg/400px-Nestl%C3%A9.svg.png"
-  },
-  {
-    name: "Ambev",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Ambev_logo.svg/400px-Ambev_logo.svg.png"
-  },
-  {
-    name: "Grupo Pão de Açúcar",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/GPA_logo.svg/400px-GPA_logo.svg.png"
-  },
-  {
-    name: "Unilever",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Unilever_logo.svg/400px-Unilever_logo.svg.png"
-  },
-  {
-    name: "KFC",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/KFC_logo.svg/400px-KFC_logo.svg.png"
-  },
-  {
-    name: "Subway",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Subway_2016_logo.svg/400px-Subway_2016_logo.svg.png"
-  },
-  {
-    name: "Carrefour",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Carrefour_logo.svg/400px-Carrefour_logo.svg.png"
-  },
-  {
-    name: "Coca-Cola",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/400px-Coca-Cola_logo.svg.png"
-  },
-  {
-    name: "Burger King",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Burger_King_2020.svg/400px-Burger_King_2020.svg.png"
-  }
+  { name: "McDonald's",         logo: "/logos/mcdonalds.svg" },
+  { name: "Pepsi",              logo: "/logos/pepsi.svg" },
+  { name: "Walmart",            logo: "/logos/walmart.svg" },
+  { name: "Nestlé",             logo: "/logos/nestle.svg" },
+  { name: "Ambev",              logo: "/logos/ambev.svg" },
+  { name: "Grupo Pão de Açúcar",logo: "/logos/gpa.svg" },
+  { name: "Unilever",           logo: "/logos/unilever.svg" },
+  { name: "KFC",                logo: "/logos/kfc.svg" },
+  { name: "Subway",             logo: "/logos/subway.svg" },
+  { name: "Carrefour",          logo: "/logos/carrefour.svg" },
+  { name: "Coca-Cola",          logo: "/logos/cocacola.svg" },
+  { name: "Burger King",        logo: "/logos/burgerking.svg" }
 ];
 
 const Home = () => {

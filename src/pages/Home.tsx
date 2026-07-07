@@ -45,7 +45,7 @@ const Home = () => {
   const toggleFAQ = (index: number) => setActiveFaq(activeFaq === index ? null : index);
 
   const stats = [
-    { number: '+1.000', label: 'Empresas Regularizadas' },
+    { number: '+6.745', label: 'Empresas Atendidas' },
     { number: '+10 Anos', label: 'de Experiência Técnica' },
     { number: '98%', label: 'de Aprovação Direta' },
     { number: '100%', label: 'Exigências Resolvidas' }
@@ -324,8 +324,8 @@ const Home = () => {
                     <FontAwesomeIcon icon={faBuilding} className="text-2xl text-gold" />
                   </div>
                   <div>
-                    <p className="text-white font-bold font-manrope text-sm">+1.000</p>
-                    <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Projetos Executados</p>
+                    <p className="text-white font-bold font-manrope text-sm">+6.745</p>
+                    <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Empresas Atendidas</p>
                   </div>
                 </motion.div>
               </div>

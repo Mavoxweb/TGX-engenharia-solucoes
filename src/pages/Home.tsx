@@ -25,18 +25,54 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const partners = [
-  { name: "McDonald's", domain: "mcdonalds.com" },
-  { name: "PepsiCo", domain: "pepsico.com" },
-  { name: "Walmart", domain: "walmart.com" },
-  { name: "Nestlé", domain: "nestle.com" },
-  { name: "Ambev", domain: "ambev.com.br" },
-  { name: "Grupo Pão de Açúcar", domain: "gpabr.com" },
-  { name: "Unilever", domain: "unilever.com" },
-  { name: "KFC", domain: "kfc.com" },
-  { name: "Subway", domain: "subway.com" },
-  { name: "Carrefour", domain: "carrefour.com.br" },
-  { name: "Coca-Cola", domain: "coca-cola.com" },
-  { name: "Burger King", domain: "bk.com" }
+  {
+    name: "McDonald's",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/400px-McDonald%27s_Golden_Arches.svg.png"
+  },
+  {
+    name: "PepsiCo",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Pepsi_logo_2014.svg/400px-Pepsi_logo_2014.svg.png"
+  },
+  {
+    name: "Walmart",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Walmart_Spark.svg/400px-Walmart_Spark.svg.png"
+  },
+  {
+    name: "Nestlé",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Nestl%C3%A9.svg/400px-Nestl%C3%A9.svg.png"
+  },
+  {
+    name: "Ambev",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Ambev_logo.svg/400px-Ambev_logo.svg.png"
+  },
+  {
+    name: "Grupo Pão de Açúcar",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/GPA_logo.svg/400px-GPA_logo.svg.png"
+  },
+  {
+    name: "Unilever",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Unilever_logo.svg/400px-Unilever_logo.svg.png"
+  },
+  {
+    name: "KFC",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/KFC_logo.svg/400px-KFC_logo.svg.png"
+  },
+  {
+    name: "Subway",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Subway_2016_logo.svg/400px-Subway_2016_logo.svg.png"
+  },
+  {
+    name: "Carrefour",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Carrefour_logo.svg/400px-Carrefour_logo.svg.png"
+  },
+  {
+    name: "Coca-Cola",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/400px-Coca-Cola_logo.svg.png"
+  },
+  {
+    name: "Burger King",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Burger_King_2020.svg/400px-Burger_King_2020.svg.png"
+  }
 ];
 
 const Home = () => {
@@ -352,20 +388,20 @@ const Home = () => {
             className="flex items-center gap-16 min-w-max px-8"
           >
             {[...partners, ...partners].map((partner, index) => (
-              <div key={index} className="flex items-center justify-center w-32 h-16 group shrink-0 relative">
+              <div key={index} className="flex items-center justify-center w-36 h-16 group shrink-0 relative">
                 <img 
-                  src={`https://logo.clearbit.com/${partner.domain}`} 
-                  alt={partner.name}
-                  className="max-w-full max-h-12 object-contain filter grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  src={partner.logo}
+                  alt={`Logo ${partner.name}`}
+                  className="max-w-full max-h-10 object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
                     if (target.nextElementSibling) {
-                      (target.nextElementSibling as HTMLElement).style.display = 'block';
+                      (target.nextElementSibling as HTMLElement).style.display = 'flex';
                     }
                   }}
                 />
-                <span className="hidden font-bold text-slate-400 uppercase tracking-widest text-[10px] text-center w-full absolute">{partner.name}</span>
+                <span className="hidden items-center justify-center font-bold text-slate-400 uppercase tracking-widest text-[9px] text-center w-full">{partner.name}</span>
               </div>
             ))}
           </motion.div>

@@ -41,6 +41,16 @@ const partners = [
 
 const Home = () => {
   const { openModal } = useModal();
+  const getModalServiceValue = (title: string) => {
+    if (title.includes('AVCB')) return 'AVCB / Bombeiros';
+    if (title.includes('Alvará')) return 'Alvará de Funcionamento';
+    if (title.includes('CETESB') || title.includes('Ambiental')) return 'CETESB';
+    if (title.includes('Sanitária') || title.includes('Vigilância')) return 'ANVISA';
+    if (title.includes('Laudos')) return 'Laudos Técnicos';
+    if (title.includes('Regularização')) return 'Regularização de Imóveis';
+    return 'Outros';
+  };
+
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const toggleFAQ = (index: number) => setActiveFaq(activeFaq === index ? null : index);
 
@@ -386,13 +396,20 @@ const Home = () => {
                   <h3 className="text-lg font-bold font-manrope text-primary mb-4">{servico.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed mb-8">{servico.desc}</p>
                 </div>
-                <Link 
-                  to="/servicos" 
-                  className="text-xs font-bold text-primary hover:text-gold uppercase tracking-wider transition-colors inline-flex items-center gap-2 group mt-auto"
-                >
-                  Ver Detalhes do Serviço 
-                  <FontAwesomeIcon icon={faArrowRight} className="text-[10px] group-hover:translate-x-1 transition-transform" />
-                </Link>
+                <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-3 w-full mt-auto">
+                  <button 
+                    onClick={() => openModal(`Interesse no serviço: ${servico.title}`, getModalServiceValue(servico.title))}
+                    className="btn-primary rounded-full text-[10px] sm:text-xs flex-1 justify-center py-3 px-4 flex items-center gap-1.5 cursor-pointer shadow-md"
+                  >
+                    Contato Direto
+                  </button>
+                  <Link 
+                    to="/servicos" 
+                    className="btn-outline rounded-full text-[10px] sm:text-xs flex-1 justify-center py-3 px-4 flex items-center gap-1.5 transition-all text-center"
+                  >
+                    Detalhe
+                  </Link>
+                </div>
               </motion.div>
             ))}
           </div>

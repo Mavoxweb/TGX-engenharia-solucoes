@@ -241,7 +241,7 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden bg-[#071C3A] text-white" style={{ paddingTop: 'clamp(112px, 13vw, 150px)', paddingBottom: 'clamp(56px, 8vw, 100px)' }}>
+      <section className="relative w-full overflow-x-hidden bg-[#071C3A] text-white" style={{ paddingTop: 'clamp(112px, 13vw, 150px)', paddingBottom: 'clamp(56px, 8vw, 100px)' }}>
         {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-[#061426] via-[#071C3A] to-[#061426] z-10" />
@@ -268,7 +268,7 @@ const Home = () => {
           <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#D7A83D]/5 rounded-full blur-[120px] pointer-events-none" />
         </div>
 
-        <div className="container mx-auto px-6 relative z-20">
+        <div className="container mx-auto px-4 sm:px-6 relative z-20 max-w-full">
           {/* Main Content Layout */}
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
@@ -277,7 +277,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="col-span-12 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left"
+              className="col-span-12 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left w-full min-w-0"
             >
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm mb-5">
@@ -307,17 +307,17 @@ const Home = () => {
               </p>
 
               {/* Serviços — Pills */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 mb-8 max-w-lg mx-auto lg:mx-0">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 mb-8 w-full max-w-lg mx-auto lg:mx-0">
                 {['AVCB / CLCB','Alvará de Funcionamento','Vigilância Sanitária','CETESB','Laudos Técnicos'].map((s) => (
-                  <span key={s} className="text-[9px] md:text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D7A83D]/20 bg-[#D7A83D]/[0.06] text-[#D7A83D]/90 leading-none tracking-wide">{s}</span>
+                  <span key={s} className="text-[9px] md:text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D7A83D]/20 bg-[#D7A83D]/[0.06] text-[#D7A83D]/90 leading-none tracking-wide whitespace-nowrap">{s}</span>
                 ))}
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md lg:max-w-xl mx-auto lg:mx-0">
+              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-full sm:max-w-md lg:max-w-xl mx-auto lg:mx-0">
                 <button
                   onClick={() => openModal('Olá, gostaria de solicitar um diagnóstico gratuito com a TGX Engenharia.')}
-                  className="flex-1 bg-[#D7A83D] hover:bg-[#E2B84A] text-[#071C3A] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_24px_rgba(215,168,61,0.3)] hover:shadow-[0_6px_32px_rgba(215,168,61,0.45)] hover:-translate-y-0.5 cursor-pointer text-xs xl:text-sm px-4" style={{ height: '52px' }}
+                  className="w-full sm:flex-1 bg-[#D7A83D] hover:bg-[#E2B84A] text-[#071C3A] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_24px_rgba(215,168,61,0.3)] hover:shadow-[0_6px_32px_rgba(215,168,61,0.45)] hover:-translate-y-0.5 cursor-pointer text-xs xl:text-sm px-4" style={{ height: '52px' }}
                 >
                   <MessageCircle className="w-4 h-4 shrink-0" />
                   Diagnóstico Gratuito
@@ -325,7 +325,7 @@ const Home = () => {
                 </button>
                 <Link
                   to="/contato"
-                  className="flex-1 border border-white/25 hover:border-[#D7A83D]/60 text-white hover:text-[#D7A83D] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-xs xl:text-sm px-4 hover:bg-white/[0.03]" style={{ height: '52px' }}
+                  className="w-full sm:flex-1 border border-white/25 hover:border-[#D7A83D]/60 text-white hover:text-[#D7A83D] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-xs xl:text-sm px-4 hover:bg-white/[0.03]" style={{ height: '52px' }}
                 >
                   Falar com Engenheiro
                 </Link>

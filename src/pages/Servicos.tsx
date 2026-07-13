@@ -8,13 +8,24 @@ import {
   faHelmetSafety, 
   faTree, 
   faMapLocationDot,
-  faArrowRight,
   faCheck,
   faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { useModal } from '../contexts/ModalContext';
 
 const Servicos = () => {
+  const { openModal } = useModal();
+  const getModalServiceValue = (title: string) => {
+    if (title.includes('AVCB')) return 'AVCB / Bombeiros';
+    if (title.includes('Alvará')) return 'Alvará de Funcionamento';
+    if (title.includes('CETESB') || title.includes('Ambiental')) return 'CETESB';
+    if (title.includes('Sanitária') || title.includes('Vigilância')) return 'ANVISA';
+    if (title.includes('Laudos')) return 'Laudos Técnicos';
+    if (title.includes('Regularização')) return 'Regularização de Imóveis';
+    return 'Outros';
+  };
+
   const servicos = [
     { 
       title: 'AVCB e CLCB (Corpo de Bombeiros)', 
@@ -190,16 +201,21 @@ const Servicos = () => {
                     </ul>
                   </div>
 
-                  <div className="mt-10 pt-8 border-t border-slate-200">
+                  <div className="mt-10 pt-8 border-t border-slate-200 flex flex-col sm:flex-row gap-3">
+                    <button 
+                      onClick={() => openModal(`Interesse no serviço: ${servico.title}`, getModalServiceValue(servico.title))}
+                      className="btn-primary rounded-full text-[10px] sm:text-xs flex-1 justify-center py-3.5 px-4 flex items-center gap-1.5 cursor-pointer shadow-md"
+                    >
+                      Contato Direto
+                    </button>
                     <a 
-                      href={`https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20serviço%20de%20${encodeURIComponent(servico.title)}.`}
+                      href={`https://wa.me/5511947505886?text=Olá,%20gostaria%20de%20saber%20mais%20detalhes%20sobre%20o%20serviço%20de%20${encodeURIComponent(servico.title)}.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-primary rounded-full text-xs w-full justify-center py-4 group flex items-center gap-2"
+                      className="btn-outline rounded-full text-[10px] sm:text-xs flex-1 justify-center py-3.5 px-4 flex items-center gap-1.5 transition-all text-center"
                     >
-                      <FontAwesomeIcon icon={faWhatsapp} className="text-sm" />
-                      Solicitar Orçamento
-                      <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1.5 transition-transform" />
+                      <FontAwesomeIcon icon={faWhatsapp} className="text-sm text-[#25D366]" />
+                      Detalhe
                     </a>
                   </div>
                 </div>

@@ -2,9 +2,10 @@ import { createContext, useContext, useState, type ReactNode } from 'react';
 
 type ModalContextType = {
   isOpen: boolean;
-  openModal: (defaultMessage?: string) => void;
+  openModal: (defaultMessage?: string, defaultService?: string) => void;
   closeModal: () => void;
   defaultMessage: string;
+  defaultService: string;
 };
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
@@ -12,9 +13,11 @@ const ModalContext = createContext<ModalContextType | undefined>(undefined);
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [defaultMessage, setDefaultMessage] = useState('');
+  const [defaultService, setDefaultService] = useState('');
 
-  const openModal = (message = '') => {
+  const openModal = (message = '', service = '') => {
     setDefaultMessage(message);
+    setDefaultService(service);
     setIsOpen(true);
   };
 
@@ -23,7 +26,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <ModalContext.Provider value={{ isOpen, openModal, closeModal, defaultMessage }}>
+    <ModalContext.Provider value={{ isOpen, openModal, closeModal, defaultMessage, defaultService }}>
       {children}
     </ModalContext.Provider>
   );

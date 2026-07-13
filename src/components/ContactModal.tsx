@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -7,7 +7,7 @@ import DOMPurify from 'dompurify';
 import { useModal } from '../contexts/ModalContext';
 
 const ContactModal = () => {
-  const { isOpen, closeModal, defaultMessage } = useModal();
+  const { isOpen, closeModal, defaultMessage, defaultService } = useModal();
   
   const [formData, setFormData] = useState({
     nome: '',
@@ -16,6 +16,18 @@ const ContactModal = () => {
     servico: '',
     detalhes: ''
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({
+        nome: '',
+        telefone: '',
+        urgencia: '',
+        servico: defaultService || '',
+        detalhes: ''
+      });
+    }
+  }, [isOpen, defaultService]);
 
   if (!isOpen) return null;
 
@@ -29,7 +41,7 @@ const ContactModal = () => {
 
     let msg = `*Novo Contato via Site - TGX Engenharia*\n\n`;
     msg += `*Nome:* ${sanitize(formData.nome)}\n`;
-    msg += `*Telefone:* ${sanitize(formData.telefone)}\n`;
+    msg += `*WhatsApp:* ${sanitize(formData.telefone)}\n`;
     msg += `*Grau de Urgência:* ${sanitize(formData.urgencia)}\n`;
     msg += `*Tipo de Serviço:* ${sanitize(formData.servico)}\n`;
     if (formData.detalhes) {
@@ -120,7 +132,7 @@ const ContactModal = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Telefone/WhatsApp *</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">WhatsApp *</label>
                   <input 
                     type="text" 
                     name="telefone"
@@ -128,7 +140,7 @@ const ContactModal = () => {
                     value={formData.telefone}
                     onChange={handleChange}
                     className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20 transition-all outline-none"
-                    placeholder="Digite seu telefone"
+                    placeholder="Digite seu WhatsApp"
                   />
                 </div>
 
@@ -164,6 +176,7 @@ const ContactModal = () => {
                     <option value="CETESB">Licenciamento Ambiental (CETESB)</option>
                     <option value="ANVISA">Vigilância Sanitária (ANVISA)</option>
                     <option value="Laudos Técnicos">Laudos Técnicos</option>
+                    <option value="Regularização de Imóveis">Regularização de Imóveis</option>
                     <option value="Outros">Outros</option>
                   </select>
                 </div>
@@ -192,7 +205,7 @@ const ContactModal = () => {
                     type="submit"
                     className="flex-1 bg-[#3b82f6] hover:bg-[#2563eb] text-white font-bold py-3 px-4 rounded-lg transition-colors text-sm shadow-md shadow-blue-500/20"
                   >
-                    Enviar Solicitação
+                    Enviar Orçamento
                   </button>
                 </div>
               </form>

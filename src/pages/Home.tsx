@@ -302,14 +302,14 @@ const Home = () => {
               </h1>
 
               {/* Descrição */}
-              <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light mb-5 break-words">
+              <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light mb-5 w-full max-w-full break-words whitespace-normal text-left">
                 Regularizamos seu negócio com rapidez, segurança e total conformidade legal.
               </p>
 
               {/* Serviços — Pills */}
               <div className="flex flex-wrap justify-start gap-1.5 mb-8 w-full">
                 {['AVCB / CLCB','Alvará de Funcionamento','Vigilância Sanitária','CETESB','Laudos Técnicos'].map((s) => (
-                  <span key={s} className="text-[9px] md:text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D7A83D]/20 bg-[#D7A83D]/[0.06] text-[#D7A83D]/90 leading-none tracking-wide whitespace-nowrap">{s}</span>
+                  <span key={s} className="text-[9px] md:text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D7A83D]/20 bg-[#D7A83D]/[0.06] text-[#D7A83D]/90 leading-none tracking-wide whitespace-normal sm:whitespace-nowrap text-left break-words">{s}</span>
                 ))}
               </div>
 

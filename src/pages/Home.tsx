@@ -277,10 +277,10 @@ const Home = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="col-span-12 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left w-full min-w-0"
+              className="col-span-12 lg:col-span-7 flex flex-col items-start text-left w-full min-w-0"
             >
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm mb-5">
+              <div className="inline-flex self-start items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm mb-5">
                 <Shield className="w-3.5 h-3.5 text-[#D7A83D]" />
                 <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-[0.18em] text-white/80">
                   Engenharia Legal e Regularizações
@@ -289,7 +289,7 @@ const Home = () => {
 
               {/* Headline */}
               <h1
-                className="font-black font-manrope text-white tracking-tight leading-[1.05] text-center lg:text-left mb-4"
+                className="font-black font-manrope text-white tracking-tight leading-[1.05] text-left mb-4"
                 style={{ fontSize: 'clamp(32px, 5.5vw, 68px)' }}
               >
                 Alvarás e Licenças
@@ -302,32 +302,32 @@ const Home = () => {
               </h1>
 
               {/* Descrição */}
-              <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light max-w-lg mb-5 mx-auto lg:mx-0">
+              <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light max-w-lg mb-5">
                 Regularizamos seu negócio com rapidez, segurança e total conformidade legal.
               </p>
 
               {/* Serviços — Pills */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 mb-8 w-full max-w-lg mx-auto lg:mx-0">
+              <div className="flex flex-wrap justify-start gap-1.5 mb-8 w-full">
                 {['AVCB / CLCB','Alvará de Funcionamento','Vigilância Sanitária','CETESB','Laudos Técnicos'].map((s) => (
                   <span key={s} className="text-[9px] md:text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D7A83D]/20 bg-[#D7A83D]/[0.06] text-[#D7A83D]/90 leading-none tracking-wide whitespace-nowrap">{s}</span>
                 ))}
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-full sm:max-w-md lg:max-w-xl mx-auto lg:mx-0">
+              <div className="flex flex-col sm:flex-row gap-3 w-full">
                 <button
                   onClick={() => openModal('Olá, gostaria de solicitar um diagnóstico gratuito com a TGX Engenharia.')}
-                  className="w-full sm:flex-1 bg-[#D7A83D] hover:bg-[#E2B84A] text-[#071C3A] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_24px_rgba(215,168,61,0.3)] hover:shadow-[0_6px_32px_rgba(215,168,61,0.45)] hover:-translate-y-0.5 cursor-pointer text-xs xl:text-sm px-4" style={{ height: '52px' }}
+                  className="w-full sm:flex-1 bg-[#D7A83D] hover:bg-[#E2B84A] text-[#071C3A] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_24px_rgba(215,168,61,0.3)] hover:shadow-[0_6px_32px_rgba(215,168,61,0.45)] hover:-translate-y-0.5 cursor-pointer text-xs xl:text-sm px-5" style={{ height: '52px' }}
                 >
                   <MessageCircle className="w-4 h-4 shrink-0" />
-                  Diagnóstico Gratuito
+                  <span className="truncate">Diagnóstico Gratuito</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
                 </button>
                 <Link
                   to="/contato"
-                  className="w-full sm:flex-1 border border-white/25 hover:border-[#D7A83D]/60 text-white hover:text-[#D7A83D] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-xs xl:text-sm px-4 hover:bg-white/[0.03]" style={{ height: '52px' }}
+                  className="w-full sm:flex-1 border border-white/25 hover:border-[#D7A83D]/60 text-white hover:text-[#D7A83D] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-xs xl:text-sm px-5 hover:bg-white/[0.03]" style={{ height: '52px' }}
                 >
-                  Falar com Engenheiro
+                  <span className="truncate">Falar com Engenheiro</span>
                 </Link>
               </div>
             </motion.div>

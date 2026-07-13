@@ -302,7 +302,7 @@ const Home = () => {
               </h1>
 
               {/* Descrição */}
-              <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light max-w-lg mb-5">
+              <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light mb-5 break-words">
                 Regularizamos seu negócio com rapidez, segurança e total conformidade legal.
               </p>
 
@@ -314,20 +314,20 @@ const Home = () => {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 w-full">
+              <div className="flex flex-col gap-2.5 w-full max-w-xs sm:max-w-none sm:flex-row sm:gap-3">
                 <button
                   onClick={() => openModal('Olá, gostaria de solicitar um diagnóstico gratuito com a TGX Engenharia.')}
-                  className="w-full sm:flex-1 bg-[#D7A83D] hover:bg-[#E2B84A] text-[#071C3A] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_24px_rgba(215,168,61,0.3)] hover:shadow-[0_6px_32px_rgba(215,168,61,0.45)] hover:-translate-y-0.5 cursor-pointer text-xs xl:text-sm px-5" style={{ height: '52px' }}
+                  className="w-full bg-[#D7A83D] hover:bg-[#E2B84A] text-[#071C3A] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_24px_rgba(215,168,61,0.3)] hover:shadow-[0_6px_32px_rgba(215,168,61,0.45)] hover:-translate-y-0.5 cursor-pointer text-xs xl:text-sm px-4" style={{ height: '48px' }}
                 >
                   <MessageCircle className="w-4 h-4 shrink-0" />
-                  <span className="truncate">Diagnóstico Gratuito</span>
+                  <span>Diagnóstico Gratuito</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
                 </button>
                 <Link
                   to="/contato"
-                  className="w-full sm:flex-1 border border-white/25 hover:border-[#D7A83D]/60 text-white hover:text-[#D7A83D] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-xs xl:text-sm px-5 hover:bg-white/[0.03]" style={{ height: '52px' }}
+                  className="w-full border border-white/25 hover:border-[#D7A83D]/60 text-white hover:text-[#D7A83D] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-xs xl:text-sm px-4 hover:bg-white/[0.03]" style={{ height: '48px' }}
                 >
-                  <span className="truncate">Falar com Engenheiro</span>
+                  <span>Falar com Engenheiro</span>
                 </Link>
               </div>
             </motion.div>

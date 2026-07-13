@@ -303,7 +303,7 @@ const Home = () => {
 
               {/* Descrição */}
               <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light mb-5 w-full max-w-full break-words whitespace-normal text-left">
-                Regularizamos seu negócio com rapidez, segurança e total conformidade legal.
+                Regularizamos seu negócio com rapidez, segurança <br className="hidden xs:inline sm:hidden" /> <span className="block sm:inline">e total conformidade legal.</span>
               </p>
 
               {/* Serviços — Pills */}

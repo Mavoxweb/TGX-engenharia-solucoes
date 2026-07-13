@@ -8,9 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { 
   faArrowRight, 
-  faShieldHalved, 
   faBuilding, 
-  faCheckCircle, 
   faFireExtinguisher, 
   faFileSignature, 
   faHelmetSafety, 
@@ -23,6 +21,20 @@ import {
   faCircleQuestion,
   faBookOpen
 } from '@fortawesome/free-solid-svg-icons';
+import { 
+  Shield, 
+  ArrowRight, 
+  FileCheck2, 
+  ShieldCheck, 
+  BadgePlus, 
+  Leaf, 
+  ClipboardCheck, 
+  Building2, 
+  Clock, 
+  Users, 
+  MapPin, 
+  MessageCircle 
+} from 'lucide-react';
 
 const partners = [
   { name: "McDonald's",         logo: "/logos/mcdonalds.svg" },
@@ -229,118 +241,214 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-primary text-white">
+      <section className="relative w-full overflow-hidden bg-[#071C3A] text-white" style={{ paddingTop: 'clamp(112px, 13vw, 150px)', paddingBottom: 'clamp(56px, 8vw, 100px)' }}>
+        {/* Background Atmosphere */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/95 to-primary z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#061426] via-[#071C3A] to-[#061426] z-10" />
           <img 
             src="https://images.unsplash.com/photo-1542362567-b07eac790acd?q=80&w=2070&auto=format&fit=crop" 
-            alt="Fachada corporativa premium" 
-            className="w-full h-full object-cover opacity-20 mix-blend-overlay scale-105"
+            alt="Fachada corporativa" 
+            className="w-full h-full object-cover opacity-15 mix-blend-overlay scale-105 pointer-events-none"
           />
           <div 
-            className="absolute inset-0 opacity-10 z-10 pointer-events-none" 
+            className="absolute inset-0 opacity-[0.04] z-10 pointer-events-none" 
             style={{ 
-              backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)', 
-              backgroundSize: '48px 48px' 
+              backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px)', 
+              backgroundSize: '40px 40px' 
             }} 
           />
           <div 
-            className="absolute inset-0 opacity-5 z-10 pointer-events-none" 
+            className="absolute inset-0 opacity-[0.02] z-10 pointer-events-none" 
             style={{ 
-              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1.5px, transparent 0)', 
-              backgroundSize: '24px 24px' 
+              backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)', 
+              backgroundSize: '8px 8px' 
             }} 
           />
-          <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute -bottom-10 -left-10 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[130px] pointer-events-none" />
+          <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#D7A83D]/5 rounded-full blur-[120px] pointer-events-none" />
         </div>
 
         <div className="container mx-auto px-6 relative z-20">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Main Content Layout */}
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* LADO ESQUERDO: Texto e Ações */}
             <motion.div 
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="max-w-2xl"
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="col-span-12 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 mb-8 backdrop-blur-sm">
-                <FontAwesomeIcon icon={faShieldHalved} className="text-gold text-sm animate-pulse" />
-                <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-300">Engenharia Legal e Regularizações</span>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm mb-5">
+                <Shield className="w-3.5 h-3.5 text-[#D7A83D]" />
+                <span className="text-[9px] md:text-[10px] font-extrabold uppercase tracking-[0.18em] text-white/80">
+                  Engenharia Legal e Regularizações
+                </span>
               </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-6 text-white tracking-tight">
-                Patrimônio protegido.<br />
-                Empresa regularizada.<br />
-                <span className="text-gradient">Sem burocracia.</span>
+
+              {/* Headline */}
+              <h1
+                className="font-black font-manrope text-white tracking-tight leading-[1.05] text-center lg:text-left mb-4"
+                style={{ fontSize: 'clamp(32px, 5.5vw, 68px)' }}
+              >
+                Alvarás e Licenças
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#D7A83D] via-[#E2B84A] to-[#E8C86F]">
+                  para Empresas
+                </span>
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-[#D7A83D] via-[#E2B84A] to-[#E8C86F]">
+                  em São Paulo.
+                </span>
               </h1>
-              
-              <p className="text-base md:text-lg text-gray-400 mb-10 leading-relaxed max-w-xl font-light">
-                Evite multas e riscos de interdição. Cuidamos do AVCB, alvarás municipais, licenciamento ambiental e laudos de engenharia com equipe própria especializada.
+
+              {/* Descrição */}
+              <p className="text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed font-light max-w-lg mb-5 mx-auto lg:mx-0">
+                Regularizamos seu negócio com rapidez, segurança e total conformidade legal.
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a 
-                  href="#"
-                  onClick={(e) => { e.preventDefault(); openModal('Olá, gostaria de solicitar um orçamento com a TGX Engenharia.'); }}
-                  className="btn-primary rounded-full flex items-center justify-center gap-2 group text-xs px-8 py-4 shadow-[0_4px_20px_rgba(215,168,61,0.25)] hover:shadow-[0_4px_30px_rgba(215,168,61,0.4)]"
+
+              {/* Serviços — Pills */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-1.5 mb-8 max-w-lg mx-auto lg:mx-0">
+                {['AVCB / CLCB','Alvará de Funcionamento','Vigilância Sanitária','CETESB','Laudos Técnicos'].map((s) => (
+                  <span key={s} className="text-[9px] md:text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#D7A83D]/20 bg-[#D7A83D]/[0.06] text-[#D7A83D]/90 leading-none tracking-wide">{s}</span>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md lg:max-w-xl mx-auto lg:mx-0">
+                <button
+                  onClick={() => openModal('Olá, gostaria de solicitar um diagnóstico gratuito com a TGX Engenharia.')}
+                  className="flex-1 bg-[#D7A83D] hover:bg-[#E2B84A] text-[#071C3A] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_24px_rgba(215,168,61,0.3)] hover:shadow-[0_6px_32px_rgba(215,168,61,0.45)] hover:-translate-y-0.5 cursor-pointer text-xs xl:text-sm px-4" style={{ height: '52px' }}
                 >
-                  <FontAwesomeIcon icon={faWhatsapp} className="text-sm" />
-                  Solicitar Diagnóstico Grátis
-                  <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1.5 transition-transform" />
-                </a>
-                <Link 
-                  to="/contato" 
-                  className="btn-outline rounded-full flex items-center justify-center gap-2 text-xs px-8 py-4 border-white/20 text-white hover:bg-white hover:text-primary hover:border-white"
+                  <MessageCircle className="w-4 h-4 shrink-0" />
+                  Diagnóstico Gratuito
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform shrink-0" />
+                </button>
+                <Link
+                  to="/contato"
+                  className="flex-1 border border-white/25 hover:border-[#D7A83D]/60 text-white hover:text-[#D7A83D] font-extrabold uppercase tracking-wider rounded-xl flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-xs xl:text-sm px-4 hover:bg-white/[0.03]" style={{ height: '52px' }}
                 >
                   Falar com Engenheiro
                 </Link>
               </div>
             </motion.div>
 
+            {/* LADO DIREITO: Composição Visual */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="hidden lg:block relative"
+              className="hidden lg:block relative col-span-12 lg:col-span-5"
             >
-              <div className="relative rounded-2xl bg-slate-900/40 border border-white/10 p-4 aspect-[4/5] max-w-md mx-auto shadow-2xl backdrop-blur-xs">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/80 via-transparent to-transparent z-10" />
-                <img 
-                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931&auto=format&fit=crop" 
-                  alt="Engenheiro analisando plantas de segurança" 
-                  className="w-full h-full object-cover rounded-xl"
-                />
+              <div className="relative rounded-2xl overflow-hidden bg-slate-950/40 border border-white/10 p-2 shadow-2xl backdrop-blur-xs">
+                <div className="relative aspect-[4/4.5] w-full rounded-xl overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071C3A] via-transparent to-transparent z-10 opacity-85" />
+                  <div className="absolute inset-0 bg-[#071C3A]/20 z-10 mix-blend-multiply" />
+                  <img 
+                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931&auto=format&fit=crop" 
+                    alt="Engenharia legal e regularização corporativa" 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                  />
+                </div>
                 
-                <motion.div 
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                  className="absolute bottom-10 -left-10 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-white/10 z-20 flex items-center gap-4"
-                >
-                  <div className="bg-success/20 p-3 rounded-full">
-                    <FontAwesomeIcon icon={faCheckCircle} className="text-2xl text-success" />
+                {/* Floating Status Panel */}
+                <div className="absolute bottom-6 left-6 right-6 bg-[#071C3A]/90 backdrop-blur-md border border-white/10 rounded-xl p-5 shadow-2xl z-20">
+                  <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#D7A83D] flex items-center gap-1.5 font-manrope">
+                      <Shield className="w-3.5 h-3.5 text-[#D7A83D]" />
+                      Conformidade Empresarial
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
                   </div>
-                  <div>
-                    <p className="text-white font-bold font-manrope text-sm">100% Aprovado</p>
-                    <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Conformidade Legal</p>
+                  <div className="space-y-3 font-inter">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-gray-300 font-medium">AVCB / CLCB</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-blue-500/25 border border-blue-500/30 text-blue-300 font-bold uppercase tracking-wider">Análise Técnica</span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-gray-300 font-medium">Alvará de Funcionamento</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-[#D7A83D]/25 border border-[#D7A83D]/30 text-[#D7A83D] font-bold uppercase tracking-wider">Em Acompanhamento</span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-gray-300 font-medium">Licença Sanitária</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-white/10 border border-white/20 text-gray-300 font-bold uppercase tracking-wider">Documentação</span>
+                    </div>
                   </div>
-                </motion.div>
-                
-                <motion.div 
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1.5 }}
-                  className="absolute top-12 -right-10 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl shadow-2xl border border-white/10 z-20 flex items-center gap-4"
-                >
-                  <div className="bg-gold/20 p-3 rounded-full">
-                    <FontAwesomeIcon icon={faBuilding} className="text-2xl text-gold" />
-                  </div>
-                  <div>
-                    <p className="text-white font-bold font-manrope text-sm">+6.745</p>
-                    <p className="text-[10px] text-gray-400 font-semibold tracking-wider uppercase">Empresas Atendidas</p>
-                  </div>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
+
           </div>
+
+          {/* GRID DE SERVIÇOS */}
+          <div className="mt-10 md:mt-14 bg-white/[0.08] border border-white/10 rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-[1px]">
+              {[
+                { name: 'Alvará de Funcionamento', icon: FileCheck2 },
+                { name: 'AVCB e CLCB', icon: ShieldCheck },
+                { name: 'Vigilância Sanitária', icon: BadgePlus },
+                { name: 'Lic. Ambiental', icon: Leaf },
+                { name: 'Laudos Técnicos', icon: ClipboardCheck },
+                { name: 'Regularização', icon: Building2 },
+              ].map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <Link
+                    key={index}
+                    to="/servicos"
+                    className="flex flex-col items-center text-center py-5 px-3 md:py-6 md:px-4 bg-[#071C3A] hover:bg-white/[0.04] transition-all duration-300"
+                  >
+                    <div className="mb-2.5 transform group-hover/item:-translate-y-0.5 transition-transform duration-300 text-[#D7A83D] bg-[#D7A83D]/10 p-2.5 rounded-lg border border-[#D7A83D]/15">
+                      <IconComponent className="w-5 h-5 shrink-0" />
+                    </div>
+                    <span className="text-[9px] md:text-[10px] font-bold text-gray-400 group-hover/item:text-white transition-colors uppercase tracking-wide leading-tight mt-0.5">
+                      {item.name}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* DIFERENCIAIS */}
+          <div className="mt-8 md:mt-12 pt-8 border-t border-white/[0.06]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-0 sm:divide-x sm:divide-white/10">
+              {[
+                { title: 'Sem Multas ou Interdições', desc: 'Conformidade legal completa para proteger sua empresa de riscos.', icon: ShieldCheck },
+                { title: 'Agilidade Garantida', desc: 'Processos padronizados com equipe técnica especializada.', icon: Clock },
+                { title: 'Engenharia do Início ao Fim', desc: 'Acompanhamos do diagnóstico até a aprovação final.', icon: Users }
+              ].map((diff, index) => {
+                const DiffIcon = diff.icon;
+                return (
+                  <div key={index} className="flex gap-3 items-start sm:px-6 first:sm:pl-0 last:sm:pr-0">
+                    <div className="text-[#D7A83D] bg-[#D7A83D]/[0.08] p-2 rounded-lg border border-[#D7A83D]/15 shrink-0 mt-0.5">
+                      <DiffIcon className="w-4 h-4 shrink-0" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-extrabold text-white mb-1 font-manrope">{diff.title}</h4>
+                      <p className="text-[11px] text-gray-400 leading-relaxed">{diff.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ÁREA DE ATENDIMENTO */}
+          <div className="mt-8 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-full bg-[#D7A83D]/10 border border-[#D7A83D]/15 flex items-center justify-center text-[#D7A83D] shrink-0">
+                <MapPin className="w-3.5 h-3.5" />
+              </div>
+              <p className="text-xs text-white font-medium">
+                Atendimento em <span className="text-[#D7A83D] font-bold">São Paulo e Grande SP</span> — todos os portes.
+              </p>
+            </div>
+            <div className="flex items-center gap-1.5 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+              <Shield className="w-3 h-3 text-[#D7A83D]/50" />
+              Conformidade Garantida
+            </div>
+          </div>
+
         </div>
       </section>
 

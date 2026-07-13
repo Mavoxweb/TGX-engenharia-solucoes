@@ -96,7 +96,9 @@ const Layout = () => {
                 </li>
                 <li className="flex items-center gap-3">
                   <FontAwesomeIcon icon={faEnvelope} className="text-gold text-sm shrink-0" />
-                  <span className="text-gray-400 text-sm">contato@tgxengenharia.com.br</span>
+                  <a href="mailto:tgxengenharia@gmail.com" className="text-gray-400 text-sm hover:text-gold transition-colors">
+                    tgxengenharia@gmail.com
+                  </a>
                 </li>
               </ul>
             </div>

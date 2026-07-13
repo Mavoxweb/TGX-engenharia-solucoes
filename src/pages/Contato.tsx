@@ -94,7 +94,7 @@ const Contato = () => {
                 </div>
                 <div>
                   <h3 className="text-primary font-bold font-manrope text-lg mb-2">E-mail Corporativo</h3>
-                  <a href="mailto:contato@tgxengenharia.com.br" className="text-slate-500 text-sm font-light hover:text-gold transition-colors">contato@tgxengenharia.com.br</a>
+                  <a href="mailto:tgxengenharia@gmail.com" className="text-slate-500 text-sm font-light hover:text-gold transition-colors">tgxengenharia@gmail.com</a>
                 </div>
               </div>
 

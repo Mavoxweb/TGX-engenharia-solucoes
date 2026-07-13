@@ -71,7 +71,7 @@ const Termos = () => {
             <div className="mt-16 p-8 bg-slate-50 border border-slate-100 rounded-2xl">
               <h3 className="font-bold text-primary font-manrope mb-2">Dúvidas sobre estes Termos?</h3>
               <p className="text-sm text-slate-600">
-                Se você tiver alguma dúvida sobre nossos Termos de Uso, entre em contato através do e-mail: <a href="mailto:contato@tgxengenharia.com.br" className="text-gold font-medium">contato@tgxengenharia.com.br</a>.
+                Se você tiver alguma dúvida sobre nossos Termos de Uso, entre em contato através do e-mail: <a href="mailto:tgxengenharia@gmail.com" className="text-gold font-medium">tgxengenharia@gmail.com</a>.
               </p>
             </div>
 

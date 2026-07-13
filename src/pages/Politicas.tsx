@@ -86,7 +86,7 @@ const Politicas = () => {
             <div className="mt-16 p-8 bg-slate-50 border border-slate-100 rounded-2xl">
               <h3 className="font-bold text-primary font-manrope mb-2">Canal de Privacidade (DPO)</h3>
               <p className="text-sm text-slate-600">
-                Para exercer seus direitos ou tirar dúvidas sobre como tratamos seus dados, entre em contato através do e-mail: <a href="mailto:privacidade@tgxengenharia.com.br" className="text-gold font-medium">privacidade@tgxengenharia.com.br</a>.
+                Para exercer seus direitos ou tirar dúvidas sobre como tratamos seus dados, entre em contato através do e-mail: <a href="mailto:tgxengenharia@gmail.com" className="text-gold font-medium">tgxengenharia@gmail.com</a>.
               </p>
             </div>
 

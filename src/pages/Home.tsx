@@ -243,7 +243,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative w-full overflow-x-hidden bg-[#071C3A] text-white" style={{ paddingTop: 'clamp(112px, 13vw, 150px)', paddingBottom: 'clamp(56px, 8vw, 100px)' }}>
         {/* Background Atmosphere */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#061426] via-[#071C3A] to-[#061426] z-10" />
           <img 
             src="https://images.unsplash.com/photo-1542362567-b07eac790acd?q=80&w=2070&auto=format&fit=crop" 
@@ -268,7 +268,7 @@ const Home = () => {
           <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#D7A83D]/5 rounded-full blur-[120px] pointer-events-none" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 relative z-20 max-w-full">
+        <div className="w-full px-4 sm:px-6 relative z-20">
           {/* Main Content Layout */}
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
